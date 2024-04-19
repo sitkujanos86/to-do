@@ -11,12 +11,37 @@ function ToDoList() {
   function handleInputChange(event) {
     setNewTask(event.target.value);
   }
-  function addTask() {}
+  function addTask() {
+    if (newTask.trim() !== "") {
+      setTasks((t) => [...t, newTask]);
+      setNewTask("");
+    }
+  }
 
-  function deleteTask(index) {}
+  function deleteTask(index) {
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTasks(updatedTasks);
+  }
 
-  function moveTaskUp(index) {}
-  function moveTaskDown(index) {}
+  function moveTaskUp(index) {
+    if (index > 0) {
+      const updatedTasks = [...tasks];
+      const temp = updatedTasks[index];
+      updatedTasks[index] = updatedTasks[index - 1];
+      updatedTasks[index - 1] = temp;
+      setTasks(updatedTasks);
+    }
+  }
+
+  function moveTaskDown(index) {
+    if (index < tasks.length - 1) {
+      const updatedTasks = [...tasks];
+      const temp = updatedTasks[index];
+      updatedTasks[index] = updatedTasks[index + 1];
+      updatedTasks[index + 1] = temp;
+      setTasks(updatedTasks);
+    }
+  }
   return (
     <div className="to-do-list">
       <h1>To-Do-List</h1>
