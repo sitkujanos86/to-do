@@ -47,6 +47,9 @@ input[type="text"] {
 }
 ol {
   padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 li {
   font-size: 2rem;
